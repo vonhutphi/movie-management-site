@@ -1,0 +1,113 @@
+.admin-content {
+    background-color: #f5f6fa;
+    // background: linear-gradient(to top, #141e30, #243b55);
+    padding: 30px 0px;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: calc(100% - 17.5%);
+    font-size: 12px;
+    // height: 100%;
+}
+.quanLy {
+    // background-color: #dbe8f171;
+    background-color: #f5f6fa;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: calc(100% - 17.5%);
+    padding: 30px 0px;
+    z-index: 1;
+    .mainContent {
+        width: 100%;
+        margin: auto;
+        .admin-header {
+            padding-left: 30px;
+            padding-right: 30px;
+            .addBtn {
+                .add {
+                    border-radius: 10px;
+                    font-size: 12px;
+                    padding: 10px 15px;
+                    color: white;
+                    // background: linear-gradient(60deg, #ef5350, #e53935);
+                    // box-shadow: 0 7px 10px -5px rgba(244, 67, 54, 0.4);
+
+                    background-color: #474787;
+                    box-shadow: 0 7px 10px -5px #6c5ce77a;
+                    border: none;
+                    transition: all 0.3s;
+                    &:active {
+                        // background-color: #fb4226;
+                        background-color: #2c2c54;
+                        border: none;
+                    }
+                    &:hover {
+                        // background-color: #ca3720 !important ;
+                        background-color: #2c2c54;
+                    }
+                    p {
+                        display: inline-block;
+                        margin-left: 15px;
+                    }
+                }
+            }
+        }
+        .data-table {
+            font-size: 13px;
+            padding: 10px 30px;
+            .table-header {
+                font-weight: 700;
+                padding: 20px 10px;
+                border-radius: 6px;
+                padding: 20px 10px;
+                margin-top: 10px !important;
+                background: rgba(128, 128, 128, 0.089);
+                box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.021);
+                border-radius: 10px;
+                transition: all 0.3s;
+                color: #474787;
+                cursor: pointer;
+                .table-header-item {
+                    position: relative;
+                }
+            }
+        }
+    }
+}
+.MuiFormControl-root {
+    width: 100%;
+}
+.pagination {
+    margin-top: 10px;
+    position: relative;
+    height: 40px;
+    nav {
+        position: absolute;
+        right: 30px;
+    }
+}
+@media screen and (max-width: 992px) {
+    .quanLy {
+        width: 100%;
+        z-index: 2;
+    }
+    .admin-content {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 1234px) {
+    .quanLy .mainContent {
+        width: 100%;
+    }
+    .admin-content,
+    .quanLy {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 1394px) and (min-width: 1236px){
+    .admin-content,
+    .quanLy {
+        width: calc(100% - 5.5%);
+    }
+}

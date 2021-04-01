@@ -1,0 +1,9 @@
+p {
+  margin-bottom: 0;
+}
+.btn-primary:focus {
+  box-shadow: unset;
+}
+.btn:focus {
+  box-shadow: unset;
+}

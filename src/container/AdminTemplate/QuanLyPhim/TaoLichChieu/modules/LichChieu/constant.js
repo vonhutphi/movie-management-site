@@ -1,0 +1,3 @@
+export const CREATE_SHOWTIME_REQUEST = 'createShowTimeReducer/CREATE_SHOWTIME_REQUEST'
+export const CREATE_SHOWTIME_SUCCESS = 'createShowTimeReducer/CREATE_SHOWTIME_SUCCESS'
+export const CREATE_SHOWTIME_FAILED = 'createShowTimeReducer/CREATE_SHOWTIME_FAILED'

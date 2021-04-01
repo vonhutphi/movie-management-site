@@ -1,0 +1,55 @@
+#navBarAdmin {
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color: white;
+  height: 50px;
+  width: 100%;
+  z-index: 4;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-shadow: 0 0 17px -12px rgba(0, 0, 0, 0.56);
+  .navBarRight {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-right: 30px;
+    i {
+      color: #40407a;
+      margin-right: 20px;
+    }
+  }
+  #navbarSupportedContent {
+    // position: absolute;
+    // right: 0;
+    padding-right: 30px;
+    a {
+      color: rgb(0, 0, 0);
+    }
+  }
+  .dropdown-menu {
+    left: -42px;
+    padding: 0;
+    .dropdown-item {
+      &:active {
+        background-color: #47478744 !important;
+      }
+    }
+  }
+  .btnMenu {
+    cursor: pointer;
+    display: none;
+    .MenuLine {
+      width: 20px;
+      height: 1px;
+      margin-bottom: 5px;
+      background-color: black;
+    }
+  }
+}
+@media screen and (max-width: 1236px) {
+  #navBarAdmin .btnMenu {
+    display: block;
+  }
+}

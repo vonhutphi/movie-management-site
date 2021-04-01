@@ -1,0 +1,26 @@
+.search {
+    form {
+        .form-control {
+            border-radius: 12px;
+            font-size: 13px;
+            padding: 10px 15px;
+            transition: all .2s;
+        }
+        .form-control:focus {
+            border-color: #ced4da;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+        }
+    }
+    button {
+        border-radius: 50%;
+        background: linear-gradient(60deg, #ef5350, #e53935);
+        width: 42px;
+        height: 42px;
+        line-height: 1.5;
+        margin-right: 10px;
+        box-shadow: 0 2px 2px 0 hsla(0, 0%, 78%, 0.2);
+        i {
+            color: white;
+        }
+    }
+}

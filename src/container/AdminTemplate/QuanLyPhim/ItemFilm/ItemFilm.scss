@@ -1,0 +1,101 @@
+.table-body-item {
+    border-radius: 6px;
+    padding: 20px 10px;
+    margin-top: 10px !important;
+    background: white;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.14);
+    border-radius: 10px;
+    transition: all 0.3s;
+
+    &:hover {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+    }
+    cursor: pointer;
+    .table-body-item > div {
+        position: relative;
+    }
+    div {
+        // white-space: nowrap;
+        // overflow: hidden;
+        // text-overflow: ellipsis;
+        p,
+        img {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    .ten-phim {
+        p {
+            font-weight: 700;
+        }
+    }
+    .danh-gia {
+        p {
+            // color: #ec4a46;
+            color: #e17055;
+            font-weight: 700;
+        }
+    }
+    .ma-nhom {
+        p {
+            color: rgba(0, 0, 0, 0.384);
+        }
+    }
+    .hinh-anh {
+        img {
+            width: 50px;
+            height: 50px;
+            border-radius: 6px;
+        }
+    }
+    .mo-ta {
+        p {
+            width: 100%;
+            text-overflow: ellipsis;
+        }
+    }
+    .moTaPhim {
+        padding: 0 15px;
+        margin-top: 30px;
+    }
+    .thaoTac {
+        // * {
+        //     margin-right: 5px;
+        // }
+        button {
+            font-size: 12px;
+            // background-color: #ef535063;
+            // color: #ef5350;
+            padding: 5px 10px;
+            border: none;
+            background-color: #afaaf8a1;
+            color: #5d50c7;
+            font-weight: 500;
+            transition: all .3s;
+            &:hover{
+                background-color: #a29bfe;
+            }
+            
+        }
+        i {
+            color: rgba(0, 0, 0, 0.5);
+            transition: all 0.3s;
+            font-size: 15px;
+        }
+        .btnSua {
+            i {
+                &:hover {
+                    color: #0984e3;
+                }
+            }
+        }
+        .btnXoa {
+            i {
+                &:hover {
+                    color: #e63c38;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+#tableBodyUser {
+    div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .btnInfo {
+        i {
+            &:hover {
+                color: #00b894;
+            }
+        }
+    }
+}

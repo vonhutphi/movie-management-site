@@ -1,0 +1,54 @@
+#taoLichChieu {
+    .showTimeTable {
+        border-radius: 10px;
+        margin-top: 20px;
+        cursor: pointer;
+        .bangLichChieuChiTiet_header {
+            border-radius: 10px;
+            // background: rgba(128, 128, 128, 0.637);
+            background: #afaaf8a1;
+            padding: 20px 30px;
+            cursor: pointer;
+            font-weight: 700;
+            color: #474787;
+        }
+        .lichChieuItem {
+            border-radius: 10px;
+            background: white;
+            padding: 10px 30px;
+            margin-top: 5px;
+        }
+        h3{
+            position: relative;
+            i{
+                position: absolute;
+                right: 10%;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #6c5ce7;
+            }
+        }
+    }
+    
+}
+
+//font color
+
+// h3.BHDStarAdmin {
+//     color: #8bc541;
+// }
+// h3.CGVAdmin {
+//     color: #e71a0f;
+// }
+// h3.CineStarAdmin {
+//     color: #df0d7a;
+// }
+// h3.GalaxyAdmin {
+//     color: #f26c39;
+// }
+// h3.LotteCinimaAdmin {
+//     color: #ca4137;
+// }
+// h3.MegaGSAdmin {
+//     color: #e5a813;
+// }
