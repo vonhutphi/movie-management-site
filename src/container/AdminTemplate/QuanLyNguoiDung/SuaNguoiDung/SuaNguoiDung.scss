@@ -3,6 +3,7 @@
         width: 80%;
         // height: 100%;
         margin: auto;
+        justify-content: center;
         .mainForm {
             padding: 10px 20px;
             background: rgba(255, 255, 255, 0.644);
@@ -85,8 +86,9 @@
         }
     }
 }
-@media screen and (max-width: 1024px) {
-    #editUser .editUserMain {
-        padding-right: 20px;
-    }
-}
+// @media screen and (max-width: 1024px) {
+//     #editUser .editUserMain {
+//         padding-right: 20px;
+        
+//     }
+// }

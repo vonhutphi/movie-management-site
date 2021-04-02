@@ -29,7 +29,8 @@ function App() {
       <BrowserRouter>
         <Switch>
           {showLayoutAdmin(routeAdmin)}
-          <Route path="/auth" component={AuthPage} />
+          {/* <Route path="/auth" component={AuthPage} /> */}
+          <Route path="/" component={AuthPage} />
         </Switch>
       </BrowserRouter>
     </>

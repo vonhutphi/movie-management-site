@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import { withStyles } from "@material-ui/core/styles";
-import { actLoginApi } from './modules/action';
+import { actLoginApi } from "./modules/action";
 import { connect } from "react-redux";
 import Validation from "./Validation";
-import './AuthPage.scss'
+import "./AuthPage.scss";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -51,11 +51,11 @@ function AuthPage(props) {
     matKhau: "",
   });
   const classes = useStyles();
-  const {  err } = props;
+  const { err } = props;
   const handleLogin = (e) => {
     e.preventDefault();
     if (handleValidation()) {
-      props.fetchLogin(user,props.history);
+      props.fetchLogin(user, props.history);
     }
   };
   const handleOnChange = (e) => {
@@ -74,40 +74,49 @@ function AuthPage(props) {
   };
   return (
     <div id="logIn">
-      <div className="logInMain">
-        <img
-          src={require("./../../../assets/images/web-logo.png").default}
-          alt=""
-        />
-        <h3>Đăng Nhập</h3>
-        <form
-          className={classes.root}
-          noValidate
-          autoComplete="off"
-          onSubmit={handleLogin}
-        >
-          <CssTextField
-            id="username"
-            label="Tài khoản"
-            className="d-block m-t-5"
-            onChange={handleOnChange}
-            name="taiKhoan"
-            value={user.taiKhoan}
-          />
-          <p id="validateUserName"></p>
-          <CssTextField
-            id="password"
-            label="Mật khẩu"
-            type="password"
-            className="d-block m-t-5"
-            onChange={handleOnChange}
-            name="matKhau"
-            value={user.matKhau}
-          />
-          <p id="validatePassWord">{renderNoti()}</p>
+      <div className="logInMain row">
+        <div className="logInLeft col-xs-12 col-sm-12 col-lg-6">
+          {/* <img
+            src={require("./../../../assets/images/web-logo.png").default}
+            alt=""
+          /> */}
+          <h3>Đăng Nhập</h3>
+          <form
+            className={classes.root}
+            noValidate
+            autoComplete="off"
+            onSubmit={handleLogin}
+          >
+            <CssTextField
+              id="username"
+              label="Tài khoản"
+              className="d-block m-t-5"
+              onChange={handleOnChange}
+              name="taiKhoan"
+              value={user.taiKhoan}
+            />
+            <p id="validateUserName"></p>
+            <CssTextField
+              id="password"
+              label="Mật khẩu"
+              type="password"
+              className="d-block m-t-5"
+              onChange={handleOnChange}
+              name="matKhau"
+              value={user.matKhau}
+            />
+            <p id="validatePassWord">{renderNoti()}</p>
 
-          <button type="submit">Đăng nhập</button>
-        </form>
+            <button type="submit">Đăng nhập</button>
+          </form>
+        </div> 
+        <div className="logInRight 	d-none d-sm-flex col-sm-12 col-lg-6">
+          <div className="logInInfo ">
+            <h4 className='text-white'>You can log in by using the following account: </h4>
+            <p>Username: Admin97</p>
+            <p>Password: 123</p>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -122,7 +131,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchLogin: (data, history) => {
-      dispatch(actLoginApi(data,history));
+      dispatch(actLoginApi(data, history));
     },
   };
 };

@@ -28,7 +28,8 @@ export default function AdminTemplate({ Compnent, ...props }) {
             </AdminLayout>
           );
         }
-        return <Redirect to='/auth'/>
+        // return <Redirect to='/auth'/>
+        return <Redirect to='/'/>
       }}
     />
   );

@@ -7,23 +7,26 @@ import "./SuaPhim.scss";
 import { actEditMovieApi } from "../modules/EditMovie/action";
 
 import { useSpring, animated } from "react-spring";
-// import { DatePicker } from "antd";
-import { actDeleteMovieDetail, actGetMovieDetailApi } from "../modules/GetMovieDetail/action";
-import Loader from '../../../../components/Loader'
+import { DatePicker } from "antd";
+import {
+  actDeleteMovieDetail,
+  actGetMovieDetailApi,
+} from "../modules/GetMovieDetail/action";
+import Loader from "../../../../components/Loader";
 
 function SuaPhim(props) {
-
   const propsAni = useSpring({
     opacity: 1,
     from: { opacity: 0 },
     config: { duration: 500 },
   });
 
-  const { filmDetail,loading } = props;
+  const { filmDetail, loading } = props;
   const [img, setImg] = useState({
     file: "",
     imagePreviewUrl: "",
   });
+  // const [date, setDate] = useState("");
   const [movie, setMovie] = useState({
     values: {
       maPhim: "",
@@ -50,10 +53,10 @@ function SuaPhim(props) {
   });
   useEffect(() => {
     props.fetchFilmDetail(props.match.params.maPhim);
-    
+
     return () => {
       props.deleteDetail();
-    }
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
@@ -72,13 +75,13 @@ function SuaPhim(props) {
           hinhAnh: filmDetail.hinhAnh,
         },
       });
-
+      
       // console.log(new Date(filmDetail.ngayKhoiChieu).toLocaleDateString());
       // console.log(filmDetail.ngayKhoiChieu)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filmDetail]);
- 
+
   const MA_NHOM = "GP03";
   const convertName = (name) => {
     switch (name) {
@@ -154,9 +157,9 @@ function SuaPhim(props) {
   };
   const renderPreview = () => {
     if (img.imagePreviewUrl) {
-      return <img src={img.imagePreviewUrl} alt=''/>;
+      return <img src={img.imagePreviewUrl} alt="" />;
     } else {
-      return <img src={movie.values.hinhAnh} alt=''/>;
+      return <img src={movie.values.hinhAnh} alt="" />;
     }
   };
   const editMovie = (e) => {
@@ -189,7 +192,7 @@ function SuaPhim(props) {
   const handleClick = () => {
     hiddenFileInput.current.click();
   };
-  if(loading) return <Loader/>
+  if (loading) return <Loader />;
   return (
     <animated.div style={propsAni} className="admin-content" id="editUser">
       <div className="editUserMain">
@@ -268,7 +271,7 @@ function SuaPhim(props) {
               <div className="formRow row">
                 <div className="form-group col-sm-6">
                   <label htmlFor="exampleInputEmail1">Ngày khởi chiếu</label>
-                  <input
+                  {/* <input
                     type="date"
                     className="form-control"
                     name="ngayKhoiChieu"
@@ -276,11 +279,10 @@ function SuaPhim(props) {
                     value={Moment(
                       new Date(movie.values.ngayKhoiChieu).toLocaleDateString()
                     ).format("YYYY-MM-DD")}
-                  />
-                  {/* <DatePicker
-                    defaultValue={
-                      Moment(new Date(movie.values.ngayKhoiChieu).toLocaleDateString(), 'YYYY-MM-DD')
-                    }
+                  /> */}
+                  <DatePicker
+                    
+      
                     onChange={(date, dateString) => {
                       setMovie({
                         ...movie,
@@ -292,7 +294,7 @@ function SuaPhim(props) {
                         },
                       });
                     }}
-                  /> */}
+                  />
                   <span className="textError">
                     {movie.errors.ngayKhoiChieu}
                   </span>
@@ -325,7 +327,7 @@ function SuaPhim(props) {
                 <textarea
                   className="form-control"
                   rows="4"
-                  style={{ resize: "none" }}
+                  // style={{ resize: "none" }}
                   name="moTa"
                   onChange={handleOnChange}
                   value={movie.values.moTa}
@@ -349,7 +351,7 @@ const mapStateToProps = (state) => {
   return {
     movieEdit: state.listMovieReducer.movieEdit,
     filmDetail: state.getMovieDetailReducer.data,
-    loading: state.getMovieDetailReducer.loading
+    loading: state.getMovieDetailReducer.loading,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -360,9 +362,9 @@ const mapDispatchToProps = (dispatch) => {
     fetchFilmDetail: (maPhim) => {
       dispatch(actGetMovieDetailApi(maPhim));
     },
-    deleteDetail: ()=>{
-      dispatch(actDeleteMovieDetail())
-    }
+    deleteDetail: () => {
+      dispatch(actDeleteMovieDetail());
+    },
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(SuaPhim);

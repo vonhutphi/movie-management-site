@@ -157,7 +157,7 @@ function ThemNguoiDung(props) {
   return (
     <animated.div style={propsAni} className="admin-content" id="editUser">
       <div className="editUserMain row">
-        <div className="mainForm col-sm-6">
+        <div className="mainForm  col-lg-6">
           <div className="back-arrow">
             <Link to="/quan-ly-nguoi-dung">
               <i className="fa fa-arrow-left"></i>

@@ -7,6 +7,7 @@ import "sweetalert2/src/sweetalert2.scss";
 import Moment from "moment";
 import { useSpring, animated } from "react-spring";
 import { DatePicker } from "antd";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 function ThemPhim(props) {
   const { data } = props;
   const propsAni = useSpring({
@@ -117,7 +118,7 @@ function ThemPhim(props) {
   };
   const renderPreview = () => {
     if (img.imagePreviewUrl) {
-      return <img src={img.imagePreviewUrl} alt='' />;
+      return <img src={img.imagePreviewUrl} alt="" />;
     }
   };
   const clearInput = useCallback(() => {
@@ -158,6 +159,10 @@ function ThemPhim(props) {
       }
       props.fetchAddMovie(form_data);
       clearInput();
+    } else {
+      Swal.fire({
+        text: "Vui lòng điền đầy đủ thông tin trước khi thêm phim",
+      });
     }
   };
   const hiddenFileInput = useRef(null);
@@ -196,6 +201,50 @@ function ThemPhim(props) {
             </div>
             <form onSubmit={addMovie} className="col-sm-10">
               <div className="formRow row">
+                <div className="form-group col-sm-6">
+                  <label htmlFor="exampleInputEmail1">Mã phim</label>
+                  <input
+                    className="form-control"
+                    name="maPhim"
+                    onChange={handleOnChange}
+                    value={movie.values.maPhim}
+                  />
+                  <span className="textError">{movie.errors.maPhim}</span>
+                </div>
+                <div className="form-group col-sm-6">
+                  <label htmlFor="exampleInputEmail1">Tên phim</label>
+                  <input
+                    className="form-control"
+                    name="tenPhim"
+                    onChange={handleOnChange}
+                    value={movie.values.tenPhim}
+                  />
+                  <span className="textError">{movie.errors.tenPhim}</span>
+                </div>
+              </div>
+              <div className="formRow row">
+                <div className="form-group col-sm-6">
+                  <label htmlFor="exampleInputEmail1">Bí danh</label>
+                  <input
+                    className="form-control"
+                    name="biDanh"
+                    onChange={handleOnChange}
+                    value={movie.values.biDanh}
+                  />
+                  <span className="textError">{movie.errors.biDanh}</span>
+                </div>
+                <div className="form-group col-sm-6">
+                  <label htmlFor="exampleInputEmail1">Trailer</label>
+                  <input
+                    className="form-control"
+                    name="trailer"
+                    onChange={handleOnChange}
+                    value={movie.values.trailer}
+                  />
+                  <span className="textError">{movie.errors.trailer}</span>
+                </div>
+              </div>
+              <div className="formRow row">
                 <div className=" col-sm-6">
                   <label htmlFor="exampleInputEmail1">Ngày khởi chiếu</label>
                   <DatePicker
@@ -215,50 +264,6 @@ function ThemPhim(props) {
                   <span className="textError">
                     {movie.errors.ngayKhoiChieu}
                   </span>
-                </div>
-                <div className="form-group col-sm-6">
-                  <label htmlFor="exampleInputEmail1">Mã phim</label>
-                  <input
-                    className="form-control"
-                    name="maPhim"
-                    onChange={handleOnChange}
-                    value={movie.values.maPhim}
-                  />
-                  <span className="textError">{movie.errors.maPhim}</span>
-                </div>
-              </div>
-              <div className="formRow row">
-                <div className="form-group col-sm-6">
-                  <label htmlFor="exampleInputEmail1">Tên phim</label>
-                  <input
-                    className="form-control"
-                    name="tenPhim"
-                    onChange={handleOnChange}
-                    value={movie.values.tenPhim}
-                  />
-                  <span className="textError">{movie.errors.tenPhim}</span>
-                </div>
-                <div className="form-group col-sm-6">
-                  <label htmlFor="exampleInputEmail1">Bí danh</label>
-                  <input
-                    className="form-control"
-                    name="biDanh"
-                    onChange={handleOnChange}
-                    value={movie.values.biDanh}
-                  />
-                  <span className="textError">{movie.errors.biDanh}</span>
-                </div>
-              </div>
-              <div className="formRow row">
-                <div className="form-group col-sm-6">
-                  <label htmlFor="exampleInputEmail1">Trailer</label>
-                  <input
-                    className="form-control"
-                    name="trailer"
-                    onChange={handleOnChange}
-                    value={movie.values.trailer}
-                  />
-                  <span className="textError">{movie.errors.trailer}</span>
                 </div>
                 <div className="form-group col-sm-6">
                   <label htmlFor="exampleInputEmail1">Đánh giá</label>

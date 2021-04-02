@@ -122,7 +122,7 @@ function TableLichChieu(props) {
   return (
     <animated.div
       style={propsAni}
-      className="data-table table-responsive showTimeTable"
+      className="data-table  showTimeTable"
     >
       <div className="row m-0 mb-2 mt-4 align-items-center">
         <div className="col-sm-5 p-0">
