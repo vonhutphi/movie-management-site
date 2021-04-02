@@ -10,12 +10,12 @@ import ItemFilm from "./ItemFilm";
 import Loader from "../../../components/Loader";
 import { useSpring, animated } from "react-spring";
 const useStyles = makeStyles((theme) => ({
-  root: {
-    "& .MuiTextField-root": {
-      margin: theme.spacing(1),
-      width: "25ch",
-    },
-  },
+  // root: {
+  //   "& .MuiTextField-root": {
+  //     margin: theme.spacing(1),
+  //     width: "25ch",
+  //   },
+  // },
   root: {
     "& > *": {
       marginTop: theme.spacing(2),
@@ -36,38 +36,39 @@ function QuanLyPhim(props) {
   const classes = useStyles();
   const ITEMS_PER_PAGE = 10;
   const { data, loading } = props;
-  const [dataFilm, setDataFilm] = useState([]);
+  // const [dataFilm, setDataFilm] = useState([]);
   const [search, setSearch] = useState("");
   const [current, setCurrent] = useState(1);
-  const [totalItems, setTotalItems] = useState(0);
-  const headers = [
-    {
-      name: "Mã phim",
-    },
-    {
-      name: "Tên phim",
-    },
-    {
-      name: "Hình ảnh",
-    },
-    {
-      name: "Mô tả",
-    },
-    {
-      name: "Mã nhóm ",
-    },
-    {
-      name: "Ngày khởi chiếu",
-    },
-    {
-      name: "Thao tác",
-    },
-  ];
+  // const [totalItems, setTotalItems] = useState(0);
+  // const headers = [
+  //   {
+  //     name: "Mã phim",
+  //   },
+  //   {
+  //     name: "Tên phim",
+  //   },
+  //   {
+  //     name: "Hình ảnh",
+  //   },
+  //   {
+  //     name: "Mô tả",
+  //   },
+  //   {
+  //     name: "Mã nhóm ",
+  //   },
+  //   {
+  //     name: "Ngày khởi chiếu",
+  //   },
+  //   {
+  //     name: "Thao tác",
+  //   },
+  // ];
   useEffect(() => {
     props.fetchListMovie();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.dataDelete]);
   const dataRender = useMemo(() => {
-    setDataFilm(data);
+    // setDataFilm(data);
     if (data) {
       let computedData = data;
       if (search) {
@@ -76,7 +77,7 @@ function QuanLyPhim(props) {
             movie.tenPhim.toLowerCase().indexOf(search.toLowerCase()) !== -1
         );
       }
-      setTotalItems(computedData.length);
+      // setTotalItems(computedData.length);
       return computedData.slice(
         (current - 1) * ITEMS_PER_PAGE,
         (current - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE
@@ -114,7 +115,7 @@ function QuanLyPhim(props) {
                   type="button"
                   className="add btn "
                 >
-                  <i class="fa fa-plus"></i>
+                  <i className="fa fa-plus"></i>
                   <p className="d-none d-xl-inline-block">Thêm phim</p>
                 </Link>
                 {/* Modal */}
@@ -146,7 +147,7 @@ function QuanLyPhim(props) {
                 <div className="table-body">{renderListMovie()}</div>
               </div>
             </div>
-            <div className={classes.root} className="pagination">
+            <div className={`${classes.root} pagination`} >
               <Pagination
                 count={data && Math.ceil(data.length / 10)}
                 onChange={handleChange}

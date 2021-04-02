@@ -25,6 +25,7 @@ const getMovieDetailReducer = (state = initialState, action) => {
       return { ...state };
     case ActionType.DELETE_MOVIE_DETAIL:
       state.data = null;
+      return {...state}
     default:
       return { ...state };
   }

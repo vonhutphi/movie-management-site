@@ -3,7 +3,7 @@ import "./SidebarAdmin.scss";
 import { NavLink } from "react-router-dom";
 import "./SidebarAdmin.scss";
 import "../NavbarAdmin/NavAdmin.scss";
-import styled from "styled-components";
+
 import { Link } from "react-router-dom";
 export default function SideBarAdmin() {
   let [count, setCount] = useState(1);
@@ -30,13 +30,13 @@ export default function SideBarAdmin() {
         </div>
         <div className="navBarRight row">
           <div className="rightIcon">
-            <i class="fa fa-bell"></i>
-            <i class="fa fa-cog"></i>
+            <i className="fa fa-bell"></i>
+            <i className="fa fa-cog"></i>
           </div>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <a
               className="nav-link  p-0"
-              href="#"
+              href='#navAdminDD'
               id="navbarDropdown"
               role="button"
               data-toggle="dropdown"
@@ -45,8 +45,8 @@ export default function SideBarAdmin() {
             >
               {JSON.parse(localStorage.getItem("UserAdmin")).taiKhoan}
             </a>
-            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-              <Link to="/auth" className="dropdown-item text-center" href="#">
+            <div className="dropdown-menu" aria-labelledby="navbarDropdown" id='navAdminDD'>
+              <Link to="/auth" className="dropdown-item text-center" >
                 Đăng xuất
               </Link>
             </div>
@@ -57,18 +57,18 @@ export default function SideBarAdmin() {
         <div className="sideBarMain">
           <ul className="sideBarItem ">
             <li className="quanLyPhim">
-              <NavLink href="#" to="/quan-ly-phim" activeClassName="active">
-                <i class="fa fa-film"></i>
+              <NavLink  to="/quan-ly-phim" activeClassName="active">
+                <i className="fa fa-film"></i>
                 <p>Quản Lý Phim</p>
               </NavLink>
             </li>
             <li className="quanLyNguoiDung">
               <NavLink
-                href="#"
+                
                 to="/quan-ly-nguoi-dung"
                 activeClassName="active"
               >
-                <i class="fa fa-user"></i>
+                <i className="fa fa-user"></i>
                 <p>Quản Lý Người Dùng</p>
               </NavLink>
             </li>
@@ -89,18 +89,18 @@ export default function SideBarAdmin() {
           </div>
           <ul className="sideBarItem ">
             <li className="quanLyPhim">
-              <NavLink href="#" to="/quan-ly-phim" activeClassName="active">
-                <i class="fa fa-film"></i>
+              <NavLink  to="/quan-ly-phim" activeClassName="active">
+                <i className="fa fa-film"></i>
                 <p>Quản Lý Phim</p>
               </NavLink>
             </li>
             <li className="quanLyNguoiDung">
               <NavLink
-                href="#"
+                
                 to="/quan-ly-nguoi-dung"
                 activeClassName="active"
               >
-                <i class="fa fa-user"></i>
+                <i className="fa fa-user"></i>
                 <p>Quản Lý Người Dùng</p>
               </NavLink>
             </li>

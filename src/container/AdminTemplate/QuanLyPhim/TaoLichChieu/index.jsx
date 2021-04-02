@@ -4,11 +4,11 @@ import { actListTheaterApi } from "./modules/CumRap/action";
 import { actListCinemaApi } from "./modules/HeThongRap/action";
 import Moment from "moment";
 import { actShowTimeApi } from "./modules/LichChieu/action";
-import { DatePicker, Space } from "antd";
+import { DatePicker } from "antd";
 import { TimePicker } from "antd";
 import { Link } from "react-router-dom";
 import "./TaoLichChieu.scss";
-import Loader from "../../../../components/Loader";
+// import Loader from "../../../../components/Loader";
 import TableLichChieu from "./TableLichChieu";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 function TaoLichChieu(props) {
@@ -19,7 +19,7 @@ function TaoLichChieu(props) {
     cumRap,
     addShowTimeData,
     filmShowTime,
-    loadingShowTime,
+    // loadingShowTime,
   } = props;
   const [tenRap, setTenRap] = useState("Chọn hệ thống rạp");
   const [tenCumRap, setTenCumRap] = useState("Chọn cụm rạp");
@@ -34,14 +34,16 @@ function TaoLichChieu(props) {
     maRap: "",
     giaVe: "",
   });
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
   useEffect(() => {
     props.fetchHeThongRap();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     if (tenRap !== "Chọn hệ thống rạp") {
       props.fetchCumRap(tenRap);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tenRap]);
 
   const renderHeThongRap = useMemo(() => {
@@ -49,10 +51,10 @@ function TaoLichChieu(props) {
       heThongRap &&
       heThongRap.map((rap, index) => {
         return (
-          <a
+          <p
             key={index}
-            class="dropdown-item"
-            href="#"
+            className="dropdown-item"
+        
             onClick={() => {
               setTenRap(rap.maHeThongRap);
               setMaRap("Chọn rạp");
@@ -60,46 +62,48 @@ function TaoLichChieu(props) {
             }}
           >
             {rap.maHeThongRap}
-          </a>
+          </p>
         );
       })
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [heThongRap]);
 
   const renderCumRap = useMemo(() => {
     if (tenRap === "Chọn hệ thống rạp") {
       return (
-        <a class="dropdown-item" href="#">
+        <p className="dropdown-item" >
           Vui lòng chọn hệ thống rạp
-        </a>
+        </p>
       );
     }
     return (
       cumRap &&
       cumRap.map((item, index) => {
         return (
-          <a
+          <p
             key={index}
-            class="dropdown-item"
-            href="#"
+            className="dropdown-item"
+     
             onClick={() => {
               setTenCumRap(item.tenCumRap);
               setMaRap("Chọn rạp");
             }}
           >
             {item.tenCumRap}
-          </a>
+          </p>
         );
       })
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cumRap]);
 
   const renderRap = useMemo(() => {
     if (tenRap === "Chọn hệ thống rạp" || tenCumRap === "Chọn cụm rạp") {
       return (
-        <a class="dropdown-item" href="#">
+        <p className="dropdown-item" >
           Vui lòng chọn hệ thống rạp và cụm rạp
-        </a>
+        </p>
       );
     }
     for (let key in cumRap) {
@@ -107,10 +111,10 @@ function TaoLichChieu(props) {
       if (cumRap[key].tenCumRap === tenCumRap) {
         return cumRap[key].danhSachRap.map((item, index) => {
           return (
-            <a
+            <p
               key={index}
-              class="dropdown-item"
-              href="#"
+              className="dropdown-item"
+    
               onClick={() => {
                 setMaRap(item.tenRap);
                 setThongTinLichChieu({
@@ -120,11 +124,12 @@ function TaoLichChieu(props) {
               }}
             >
               {item.tenRap} - Mã rạp: {item.maRap}
-            </a>
+            </p>
           );
         });
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tenCumRap, cumRap, tenRap]);
 
   const renderTableLichChieu = useMemo(() => {
@@ -134,6 +139,7 @@ function TaoLichChieu(props) {
         addShowTimeData={addShowTimeData}
       />
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addShowTimeData]);
 
   const validation = () => {
@@ -182,7 +188,7 @@ function TaoLichChieu(props) {
       <div id="taoLichChieu">
         <div className="back-arrow">
           <Link to="/quan-ly-phim">
-            <i class="fa fa-arrow-left"></i>
+            <i className="fa fa-arrow-left"></i>
           </Link>
         </div>
         <h3 className="titleLichChieu mb-4">
@@ -204,9 +210,9 @@ function TaoLichChieu(props) {
               Điền vào thông tin sau để tạo lịch chiếu:
             </p>
             <div className="thongTinRap row">
-              <div class="dropdown col-sm-4">
+              <div className="dropdown col-sm-4">
                 <button
-                  class="btn btn-secondary"
+                  className="btn btn-secondary"
                   type="button"
                   id="heThongRap"
                   data-toggle="dropdown"
@@ -214,15 +220,15 @@ function TaoLichChieu(props) {
                   aria-expanded="false"
                 >
                   {tenRap}
-                  <i class="fa fa-angle-down"></i>
+                  <i className="fa fa-angle-down"></i>
                 </button>
-                <div class="dropdown-menu" aria-labelledby="heThongRap">
+                <div className="dropdown-menu" aria-labelledby="heThongRap">
                   {renderHeThongRap}
                 </div>
               </div>
-              <div class="dropdown col-sm-4">
+              <div className="dropdown col-sm-4">
                 <button
-                  class="btn btn-secondary"
+                  className="btn btn-secondary"
                   type="button"
                   id="cumRap"
                   data-toggle="dropdown"
@@ -230,15 +236,15 @@ function TaoLichChieu(props) {
                   aria-expanded="false"
                 >
                   {tenCumRap}
-                  <i class="fa fa-angle-down"></i>
+                  <i className="fa fa-angle-down"></i>
                 </button>
-                <div class="dropdown-menu" aria-labelledby="cumRap">
+                <div className="dropdown-menu" aria-labelledby="cumRap">
                   {renderCumRap}
                 </div>
               </div>
-              <div class="dropdown col-sm-4">
+              <div className="dropdown col-sm-4">
                 <button
-                  class="btn btn-secondary"
+                  className="btn btn-secondary"
                   type="button"
                   id="dropdownMenuButton"
                   data-toggle="dropdown"
@@ -246,9 +252,9 @@ function TaoLichChieu(props) {
                   aria-expanded="false"
                 >
                   {maRap}
-                  <i class="fa fa-angle-down"></i>
+                  <i className="fa fa-angle-down"></i>
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   {renderRap}
                 </div>
               </div>
@@ -278,7 +284,7 @@ function TaoLichChieu(props) {
                 </label>
                 <TimePicker
                   placeholder="Chọn giờ chiếu"
-                  defaultOpenValue={Moment("00:00:00", "HH:mm:ss")}
+                  // defaultValue={Moment("00:00:00", "HH:mm:ss")}
                   onChange={(time, timeString) => {
                     setNgayChieuGioChieu({
                       ...ngayChieuGioChieu,
@@ -306,7 +312,7 @@ function TaoLichChieu(props) {
                 />
               </div>
             </div>
-            <div>{error}</div>
+            {/* <div>{error}</div> */}
             <button
               className="btn btn-info btnTaoLichChieu col-sm-3"
               onClick={addShowTime}

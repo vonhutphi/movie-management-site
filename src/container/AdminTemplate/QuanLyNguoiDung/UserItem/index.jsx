@@ -1,26 +1,15 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 import { connect } from "react-redux";
 import { actListUserApi, actSetUserEdit } from "../modules/ListUser/action";
 import { fetchDeleteUserApi } from "../modules/DeleteUser/action";
 import "./UserItem.scss";
 import { Link } from "react-router-dom";
-import { AlertMes } from "../../../../components/Alert";
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > *": {
-      marginTop: theme.spacing(2),
-    },
-  },
-}));
+
+
 function UserItem(props) {
-  
-  const classes = useStyles();
-  const { item, stt, err, data, url } = props;
+  const { item, stt } = props;
   const handleDelete = () => {
     props.deleteUser(item.taiKhoan);
-
-    // document.getElementById("notiDelete").style.display = "block";
   };
   
   return (
@@ -45,7 +34,7 @@ function UserItem(props) {
           <div className="btnSua">
             <Link to={`quan-ly-nguoi-dung/sua/${item.taiKhoan}`}>
               <i
-                class="fa fa-edit"
+                className="fa fa-edit"
                 onClick={() => {
                   // props.setUserEdit(item);
                 }}
@@ -53,10 +42,10 @@ function UserItem(props) {
             </Link>
           </div>
           <div className="btnXoa">
-            <i class="fa fa-trash" onClick={handleDelete}></i>
+            <i className="fa fa-trash" onClick={handleDelete}></i>
           </div>
           <div className="btnInfo">
-            <i class="fa fa-info"></i>
+            <i className="fa fa-info"></i>
           </div>
         </div>
       </div>

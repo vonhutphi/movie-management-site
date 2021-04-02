@@ -1,6 +1,6 @@
-import React,{useState} from 'react'
+import React,{useState,memo} from 'react'
 import './SearchAdmin.scss'
-export default function SearchAdmin(props) {
+function SearchAdmin(props) {
     const {onSearch, typeSearch}=props
     const [search,setSearch]=useState('');
 
@@ -26,3 +26,4 @@ export default function SearchAdmin(props) {
         </div>
     )
 }
+export default memo(SearchAdmin)

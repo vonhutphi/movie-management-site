@@ -5,31 +5,21 @@ import "sweetalert2/src/sweetalert2.scss";
 import Moment from "moment";
 import "./SuaPhim.scss";
 import { actEditMovieApi } from "../modules/EditMovie/action";
-import { makeStyles } from "@material-ui/core/styles";
+
 import { useSpring, animated } from "react-spring";
-import { DatePicker, Space } from "antd";
+// import { DatePicker } from "antd";
 import { actDeleteMovieDetail, actGetMovieDetailApi } from "../modules/GetMovieDetail/action";
 import Loader from '../../../../components/Loader'
-const useStyles = makeStyles((theme) => ({
-  container: {
-    display: "flex",
-    flexWrap: "wrap",
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: 200,
-  },
-}));
+
 function SuaPhim(props) {
-  const classes = useStyles();
+
   const propsAni = useSpring({
     opacity: 1,
     from: { opacity: 0 },
     config: { duration: 500 },
   });
 
-  const { movieEdit, filmDetail,loading } = props;
+  const { filmDetail,loading } = props;
   const [img, setImg] = useState({
     file: "",
     imagePreviewUrl: "",
@@ -60,9 +50,11 @@ function SuaPhim(props) {
   });
   useEffect(() => {
     props.fetchFilmDetail(props.match.params.maPhim);
+    
     return () => {
       props.deleteDetail();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     if (filmDetail) {
@@ -81,8 +73,10 @@ function SuaPhim(props) {
         },
       });
 
-      console.log(new Date(movie.values.ngayKhoiChieu).toLocaleDateString());
+      // console.log(new Date(filmDetail.ngayKhoiChieu).toLocaleDateString());
+      // console.log(filmDetail.ngayKhoiChieu)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filmDetail]);
  
   const MA_NHOM = "GP03";
@@ -160,9 +154,9 @@ function SuaPhim(props) {
   };
   const renderPreview = () => {
     if (img.imagePreviewUrl) {
-      return <img src={img.imagePreviewUrl} />;
+      return <img src={img.imagePreviewUrl} alt=''/>;
     } else {
-      return <img src={movie.values.hinhAnh} />;
+      return <img src={movie.values.hinhAnh} alt=''/>;
     }
   };
   const editMovie = (e) => {
@@ -202,7 +196,7 @@ function SuaPhim(props) {
         <div className="mainForm movieControl editFilm">
           <div className="back-arrow">
             <Link to="/quan-ly-phim">
-              <i class="fa fa-arrow-left"></i>
+              <i className="fa fa-arrow-left"></i>
             </Link>
           </div>
           <h3>Sửa phim</h3>

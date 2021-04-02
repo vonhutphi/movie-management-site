@@ -7,9 +7,7 @@ import { setMovieEdit } from "../modules/ListMovie/action";
 import "./ItemFilm.scss";
 function ItemFilm(props) {
   const { item } = props;
-  const showMoTa = () => {
-    document.getElementById(`${item.biDanh}`).style.display = "block";
-  };
+  
   return (
     <div
       className="table-body-item row ml-0 mr-0"
@@ -44,7 +42,7 @@ function ItemFilm(props) {
         <div className="btnSua">
           <Link to={`/quan-ly-phim/sua-phim/${item.maPhim}`}>
             <i
-              class="fa fa-edit"
+              className="fa fa-edit"
               onClick={() => {
                 // props.setFilmEdit(item);
                 // props.fetchFilmDetail(item.maPhim)
@@ -54,7 +52,7 @@ function ItemFilm(props) {
         </div>
         <div className="btnXoa">
           <i
-            class="fa fa-trash"
+            className="fa fa-trash"
             onClick={() => props.deleteFilm(item.maPhim)}
           ></i>
         </div>

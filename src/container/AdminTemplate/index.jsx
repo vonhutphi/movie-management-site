@@ -1,9 +1,9 @@
 import React from "react";
 import SideBarAdmin from '../../components/SidebarAdmin'
-import NavBarAdmin from '../../components/NavbarAdmin'
-import {Switch, Route } from "react-router-dom";
-import QuanLyPhim from './QuanLyPhim'
-import QuanLyNguoiDung from './QuanLyNguoiDung'
+// import NavBarAdmin from '../../components/NavbarAdmin'
+import {Route } from "react-router-dom";
+// import QuanLyPhim from './QuanLyPhim'
+// import QuanLyNguoiDung from './QuanLyNguoiDung'
 
 import { Redirect } from "react-router-dom";
 

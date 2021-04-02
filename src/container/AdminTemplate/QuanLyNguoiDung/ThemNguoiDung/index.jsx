@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function ThemNguoiDung(props) {
-  const { err, data } = props;
+  const {  data } = props;
   const classes = useStyles();
   const MA_NHOM = "GP03";
   const propsAni = useSpring({
@@ -73,6 +73,7 @@ function ThemNguoiDung(props) {
         values: newValue,
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
   const addUser = (e) => {
     e.preventDefault();
@@ -135,7 +136,7 @@ function ThemNguoiDung(props) {
       newInvalid[name] = false;
     }
     if (type === "email") {
-      const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+      const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;// eslint-disable-line
       if (!re.test(value)) {
         newErrors[name] = convertName(name) + " không đúng định dạng";
         newInvalid[name] = true;
@@ -159,7 +160,7 @@ function ThemNguoiDung(props) {
         <div className="mainForm col-sm-6">
           <div className="back-arrow">
             <Link to="/quan-ly-nguoi-dung">
-              <i class="fa fa-arrow-left"></i>
+              <i className="fa fa-arrow-left"></i>
             </Link>
           </div>
           <h3>Thêm người dùng</h3>

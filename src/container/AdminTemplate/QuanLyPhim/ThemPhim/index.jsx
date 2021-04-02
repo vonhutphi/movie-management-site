@@ -6,7 +6,7 @@ import { actAddMovieApi } from "../modules/AddMovie/action";
 import "sweetalert2/src/sweetalert2.scss";
 import Moment from "moment";
 import { useSpring, animated } from "react-spring";
-import { DatePicker, Space } from "antd";
+import { DatePicker } from "antd";
 function ThemPhim(props) {
   const { data } = props;
   const propsAni = useSpring({
@@ -117,7 +117,7 @@ function ThemPhim(props) {
   };
   const renderPreview = () => {
     if (img.imagePreviewUrl) {
-      return <img src={img.imagePreviewUrl} />;
+      return <img src={img.imagePreviewUrl} alt='' />;
     }
   };
   const clearInput = useCallback(() => {
@@ -131,11 +131,12 @@ function ThemPhim(props) {
         values: newValue,
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
   const addMovie = (e) => {
-    const { name, value } = e.target;
+    // const { name, value } = e.target;
     e.preventDefault();
-    let newErr = { ...movie.errors };
+    // let newErr = { ...movie.errors };
     let valid = true;
     const { values, errors } = movie;
     for (let key in values) {
@@ -169,7 +170,7 @@ function ThemPhim(props) {
         <div className="mainForm movieControl">
           <div className="back-arrow">
             <Link to="/quan-ly-phim">
-              <i class="fa fa-arrow-left"></i>
+              <i className="fa fa-arrow-left"></i>
             </Link>
           </div>
           <h3>Thêm phim</h3>
@@ -307,4 +308,4 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
-export default connect(null, mapDispatchToProps)(ThemPhim);
+export default connect(mapStateToProps, mapDispatchToProps)(ThemPhim);

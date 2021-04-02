@@ -10,24 +10,13 @@ import { actSetUserEdit } from "./modules/ListUser/action";
 import SearchAdmin from "../../../components/SearchAdmin";
 import { Link, useRouteMatch } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
-import AlertBox from "../../../components/Alert";
-import Loader from '../../../components/Loader'
+
+import Loader from "../../../components/Loader";
 const useStyles = makeStyles((theme) => ({
-  root: {
-    "& .MuiTextField-root": {
-      margin: theme.spacing(1),
-      width: "25ch",
-    },
-  },
   root: {
     "& > *": {
       marginTop: theme.spacing(2),
     },
-  },
-  table: {
-    minWidth: 650,
-    borderRadius: "6px",
-    boxShadow: "0 1px 4px 0 rgba(0,0,0,0.14)",
   },
 }));
 
@@ -40,40 +29,22 @@ function QuanLyNguoiDung(props) {
   });
   const ITEMS_PER_PAGE = 10;
   const classes = useStyles();
-  const { userList, loading, deleteData, addData, editData } = props;
-  const [data, setData] = useState([]);
+  const { userList, loading, deleteData } = props;
+  // const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [current, setCurrent] = useState(1);
-  const [totalItems, setTotalItems] = useState(0);
-  const headers = [
-    {
-      name: "STT",
-    },
-    {
-      name: "Tài khoản",
-    },
-    {
-      name: "Họ tên",
-    },
-    {
-      name: "Email",
-    },
-    {
-      name: "Số điện thoại",
-    },
-    {
-      name: "Thao tác",
-    },
-  ];
+  // const [totalItems, setTotalItems] = useState(0);
+
   useEffect(() => {
     props.fetchListUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deleteData]);
   // useEffect(() => {
   //   props.fetchListUser();
   //   // setData(userList);
   // }, [deleteData]);
   const commentData = useMemo(() => {
-  //  setData(userList);
+    //  setData(userList);
     if (userList) {
       let computedComments = userList;
       if (search) {
@@ -83,7 +54,7 @@ function QuanLyNguoiDung(props) {
             user.email.toLowerCase().indexOf(search.toLowerCase()) !== -1
         );
       }
-      setTotalItems(computedComments.length);
+      // setTotalItems(computedComments.length);
       return computedComments.slice(
         (current - 1) * ITEMS_PER_PAGE,
         (current - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE
@@ -102,8 +73,8 @@ function QuanLyNguoiDung(props) {
     setCurrent(value);
     console.log(value);
   };
-  if(loading){
-    return <Loader/>
+  if (loading) {
+    return <Loader />;
   }
   return (
     <animated.div style={propsAni}>
@@ -128,11 +99,9 @@ function QuanLyNguoiDung(props) {
                   });
                 }}
               >
-                <i class="fa fa-plus"></i>
+                <i className="fa fa-plus"></i>
                 <p className="d-none d-xl-inline-block">Thêm người dùng</p>
               </Link>
-              {/* Modal */}
-              {/* <ModalUser /> */}
             </div>
             <div className="col-sm-10 col-lg-9 p-0">
               <SearchAdmin
@@ -157,7 +126,7 @@ function QuanLyNguoiDung(props) {
               <div className="table-body">{renderListUser()}</div>
             </div>
           </div>
-          <div className={classes.root} className="pagination">
+          <div className={`${classes.root} pagination`}>
             <Pagination
               count={userList && Math.ceil(userList.length / 10)}
               onChange={handleChange}

@@ -1,4 +1,4 @@
-import AuthPage from '../container/AdminTemplate/AuthPage'
+
 import QuanLyNguoiDung from '../container/AdminTemplate/QuanLyNguoiDung'
 import QuanLyPhim from '../container/AdminTemplate/QuanLyPhim'
 import SuaNguoiDung from '../container/AdminTemplate/QuanLyNguoiDung/SuaNguoiDung'

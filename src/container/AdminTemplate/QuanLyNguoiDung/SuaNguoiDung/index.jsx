@@ -45,6 +45,14 @@ function SuaNguoiDung(props) {
       soDt: "",
       maNhom: "",
       maLoaiNguoiDung: "",
+
+      // taiKhoan: userDetail && userDetail.taiKhoan,
+      // matKhau: userDetail && userDetail.matKhau,
+      // hoTen: userDetail && userDetail.hoTen,
+      // email: userDetail && userDetail.email,
+      // soDt: userDetail && userDetail.soDT,
+      // maNhom: userDetail && userDetail.maNhom,
+      // maLoaiNguoiDung: userDetail && userDetail.loaiNguoiDung,
     },
     errors: {
       taiKhoan: "",
@@ -70,6 +78,7 @@ function SuaNguoiDung(props) {
     return () => {
       props.deleteDetailUser();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     if (userDetail) {
@@ -86,7 +95,9 @@ function SuaNguoiDung(props) {
         },
       });
     }
+    
     // setUser({ ...user, values: userEdit });
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userDetail]);
   const convertName = (name) => {
     switch (name) {
@@ -124,7 +135,7 @@ function SuaNguoiDung(props) {
       newInvalid[name] = false;
     }
     if (type === "email") {
-      const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+      const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;// eslint-disable-line
       if (!re.test(value)) {
         newErrors[name] = convertName(name) + " không đúng định dạng";
         newInvalid[name] = true;
@@ -145,7 +156,7 @@ function SuaNguoiDung(props) {
         <div className="mainForm col-sm-6">
           <div className="back-arrow">
             <Link to="/quan-ly-nguoi-dung">
-              <i class="fa fa-arrow-left"></i>
+              <i className="fa fa-arrow-left"></i>
             </Link>
           </div>
           <h3>Sửa thông tin người dùng</h3>

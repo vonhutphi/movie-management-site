@@ -1,6 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { connect } from "react-redux";
-import LichChieuTheoRap from "./LichChieuTheoRap";
 import { actdeleteShowTime, actFilmShowTimeApi } from "./modules/action";
 import "./TableLichChieu.scss";
 import { useSpring, animated } from "react-spring";
@@ -13,12 +12,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import SearchAdmin from "../../../../../components/SearchAdmin";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    "& .MuiTextField-root": {
-      margin: theme.spacing(1),
-      width: "25ch",
-    },
-  },
   root: {
     "& > *": {
       marginTop: theme.spacing(2),
@@ -40,11 +33,12 @@ function TableLichChieu(props) {
   const [thongTinLichChieu, setThongTinLichChieu] = useState();
   const [search, setSearch] = useState("");
   const [current, setCurrent] = useState(1);
-  const [totalItems, setTotalItems] = useState(0);
+  // const [totalItems, setTotalItems] = useState(0);
   const { filmShowTime, maPhim, addShowTimeData, detailShowTimeList } = props;
 
   useEffect(() => {
     props.fetchFilmShowTime(maPhim);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addShowTimeData]);
   useEffect(() => {
     return (
@@ -54,7 +48,7 @@ function TableLichChieu(props) {
         return CineSystem.cumRapChieu.map((cumRapDetail) => {
           const tenCumRap = cumRapDetail.tenCumRap;
           return cumRapDetail.lichChieuPhim.map((item) => {
-            props.addDetail({
+            return props.addDetail({
               maHeThongRap,
               tenCumRap,
               maLichChieu: item.maLichChieu,
@@ -70,6 +64,7 @@ function TableLichChieu(props) {
         });
       })
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filmShowTime]);
   //unmount => clear state.data tren reducer
   useEffect(() => {
@@ -77,6 +72,7 @@ function TableLichChieu(props) {
       props.deleteDetail();
       props.deleteShowTime();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const dataLichChieu = useMemo(() => {
@@ -95,7 +91,7 @@ function TableLichChieu(props) {
               -1
         );
       }
-      setTotalItems(computedData.length);
+      // setTotalItems(computedData.length);
       return computedData.slice(
         (current - 1) * ITEMS_PER_PAGE,
         (current - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE
@@ -152,7 +148,7 @@ function TableLichChieu(props) {
           <div className="table-header-item col-sm-2">Thời lượng phim</div>
         </div>
         <div className="">{renderListChieu()}</div>
-        <div className={classes.root} className="pagination">
+        <div className={`${classes.root} pagination`}>
           <Pagination
             count={
               thongTinLichChieu && Math.ceil(thongTinLichChieu.length / 20)

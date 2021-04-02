@@ -8,7 +8,7 @@ let initialState = {
 
 const deleteMovieReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.DELETE_MOVIE_FAILED:
+    case ActionType.DELETE_MOVIE_REQUEST:
       state.loading = true;
       state.data = null;
       state.err = null;

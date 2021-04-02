@@ -51,7 +51,7 @@ function AuthPage(props) {
     matKhau: "",
   });
   const classes = useStyles();
-  const { data, err } = props;
+  const {  err } = props;
   const handleLogin = (e) => {
     e.preventDefault();
     if (handleValidation()) {
