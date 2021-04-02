@@ -30,7 +30,7 @@ function App() {
         <Switch>
           {showLayoutAdmin(routeAdmin)}
           {/* <Route path="/auth" component={AuthPage} /> */}
-          <Route path="/" component={AuthPage} />
+          <Route path="/" exact component={AuthPage} />
         </Switch>
       </BrowserRouter>
     </>

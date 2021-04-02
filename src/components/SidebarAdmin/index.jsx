@@ -46,7 +46,7 @@ export default function SideBarAdmin() {
               {JSON.parse(localStorage.getItem("UserAdmin")).taiKhoan}
             </a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdown" id='navAdminDD'>
-              <Link to="/auth" className="dropdown-item text-center" onClick={()=>{
+              <Link to="/" className="dropdown-item text-center" onClick={()=>{
                 localStorage.clear()
               }}>
                 Đăng xuất
