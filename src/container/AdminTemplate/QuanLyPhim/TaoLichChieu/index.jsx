@@ -34,6 +34,7 @@ function TaoLichChieu(props) {
     maRap: "",
     giaVe: "",
   });
+  
   // const [error, setError] = useState("");
   useEffect(() => {
     props.fetchHeThongRap();
@@ -45,7 +46,6 @@ function TaoLichChieu(props) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tenRap]);
-
   const renderHeThongRap = useMemo(() => {
     return (
       heThongRap &&
@@ -54,7 +54,6 @@ function TaoLichChieu(props) {
           <p
             key={index}
             className="dropdown-item"
-        
             onClick={() => {
               setTenRap(rap.maHeThongRap);
               setMaRap("Chọn rạp");
@@ -71,11 +70,7 @@ function TaoLichChieu(props) {
 
   const renderCumRap = useMemo(() => {
     if (tenRap === "Chọn hệ thống rạp") {
-      return (
-        <p className="dropdown-item" >
-          Vui lòng chọn hệ thống rạp
-        </p>
-      );
+      return <p className="dropdown-item">Vui lòng chọn hệ thống rạp</p>;
     }
     return (
       cumRap &&
@@ -84,7 +79,6 @@ function TaoLichChieu(props) {
           <p
             key={index}
             className="dropdown-item"
-     
             onClick={() => {
               setTenCumRap(item.tenCumRap);
               setMaRap("Chọn rạp");
@@ -101,9 +95,7 @@ function TaoLichChieu(props) {
   const renderRap = useMemo(() => {
     if (tenRap === "Chọn hệ thống rạp" || tenCumRap === "Chọn cụm rạp") {
       return (
-        <p className="dropdown-item" >
-          Vui lòng chọn hệ thống rạp và cụm rạp
-        </p>
+        <p className="dropdown-item">Vui lòng chọn hệ thống rạp và cụm rạp</p>
       );
     }
     for (let key in cumRap) {
@@ -114,7 +106,6 @@ function TaoLichChieu(props) {
             <p
               key={index}
               className="dropdown-item"
-    
               onClick={() => {
                 setMaRap(item.tenRap);
                 setThongTinLichChieu({
@@ -149,14 +140,17 @@ function TaoLichChieu(props) {
         valid = false;
       }
     }
-    if(tenRap==='Chọn hệ thống rạp'){
-      valid = false
+    if (tenRap === "Chọn hệ thống rạp") {
+      valid = false;
     }
-    if(tenCumRap === 'Chọn cụm rạp'){
-      valid = false
+    if (tenCumRap === "Chọn cụm rạp") {
+      valid = false;
     }
-    if(maRap === 'maRap'){
-      valid = false
+    if (maRap === "Chọn rạp") {
+      valid = false;
+    }
+    if (thongTinLichChieu.giaVe === "") {
+      valid = false;
     }
     // if (!valid) {
     //   setError("Vui lòng điền đầy đủ thông tin trước khi tạo lịch chiếu");
@@ -193,14 +187,16 @@ function TaoLichChieu(props) {
         </div>
         <h3 className="titleLichChieu mb-4">
           Tạo lịch chiếu:{" "}
-          <span style={{ fontWeight: "500", color: "#474787" }}>
+          <span style={{ fontWeight: "500", color: "#333" }}>
             {filmShowTime && filmShowTime.tenPhim}
+            {/* {filmInfo && filmInfo.tenPhim} */}
           </span>
         </h3>
         <div className="thongTinShowTime row">
           <div className="hinhAnhPhim col-sm-2">
             <img
               src={filmShowTime && filmShowTime.hinhAnh}
+              // src={filmInfo && filmInfo.hinhAnh}
               style={{ width: "85%", borderRadius: "10px" }}
               alt=""
             />
@@ -254,7 +250,10 @@ function TaoLichChieu(props) {
                   {maRap}
                   <i className="fa fa-angle-down"></i>
                 </button>
-                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div
+                  className="dropdown-menu"
+                  aria-labelledby="dropdownMenuButton"
+                >
                   {renderRap}
                 </div>
               </div>
@@ -309,6 +308,7 @@ function TaoLichChieu(props) {
                       giaVe: e.target.value,
                     });
                   }}
+                  value={thongTinLichChieu.giaVe}
                 />
               </div>
             </div>

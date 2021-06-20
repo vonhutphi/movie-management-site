@@ -6,7 +6,7 @@
         .bangLichChieuChiTiet_header {
             border-radius: 10px;
             // background: rgba(128, 128, 128, 0.637);
-            background: #afaaf8a1;
+            background: rgba(128, 128, 128, 0.089);
             padding: 20px 30px;
             cursor: pointer;
             font-weight: 700;
@@ -18,9 +18,9 @@
             padding: 10px 30px;
             margin-top: 5px;
         }
-        h3{
+        h3 {
             position: relative;
-            i{
+            i {
                 position: absolute;
                 right: 10%;
                 top: 50%;
@@ -29,7 +29,6 @@
             }
         }
     }
-    
 }
 
 //font color

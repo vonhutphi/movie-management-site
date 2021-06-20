@@ -113,8 +113,8 @@ function AuthPage(props) {
         <div className="logInRight 	d-none d-sm-flex col-sm-12 col-lg-6">
           <div className="logInInfo ">
             <h4 className='text-white'>You can log in by using the following account: </h4>
-            <p>Username: 123@admin</p>
-            <p>Password: 148</p>
+            <p>Username: chuong11</p>
+            <p>Password: 12345</p>
           </div>
         </div>
       </div>

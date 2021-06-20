@@ -27,7 +27,7 @@
     "redux-thunk": "^2.3.0",
     "styled-component": "^2.8.0",
     "styled-components": "^5.2.1",
-    "sweetalert2": "^10.15.6",
+    "sweetalert2": "^10.16.9",
     "tailwindcss": "^2.0.4",
     "web-vitals": "^1.1.1"
   },
